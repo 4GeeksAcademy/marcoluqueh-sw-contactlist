@@ -4,12 +4,20 @@ import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
 
 import { Home } from "./pages/home";
+import { NotFound404 } from "./pages/NotFound404.jsx";
+import { Personajes } from "./pages/Personajes.jsx";
+import { DetallePersonajes } from "./pages/DetallePersonajes.jsx";
 import { Demo } from "./pages/demo";
-import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Planetas } from "./pages/Planetas.jsx";
+import { DetallePlanetas } from "./pages/DetallePlanetas.jsx";
+import { DetalleNaves } from "./pages/DetalleNaves.jsx";
+
+import { Naves } from "./pages/Naves.jsx";
+import { Spinner } from "./component/Spinner.jsx";
 
 //create your first component
 const Layout = () => {
@@ -26,9 +34,14 @@ const Layout = () => {
                     <Navbar />
                     <Routes>
                         <Route element={<Home />} path="/" />
+                        <Route element={<Personajes />} path="/personajes" />
+                        <Route element={<Planetas />} path="/planetas" />
+                        <Route element={<Naves />} path="/naves" />
+                        <Route element={<DetallePersonajes />} path="/detalle-personajes" />
+                        <Route element={<DetallePlanetas />} path="/detalle-planetas" />
+                        <Route element={<DetalleNaves />} path="/detalle-naves" />
                         <Route element={<Demo />} path="/demo" />
-                        <Route element={<Single />} path="/single/:theid" />
-                        <Route element={<h1>Not found!</h1>} />
+                        <Route element={<NotFound404 />} path='*'/>
                     </Routes>
                     <Footer />
                 </ScrollToTop>
