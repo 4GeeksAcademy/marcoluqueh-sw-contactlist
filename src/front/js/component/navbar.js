@@ -27,14 +27,14 @@ export const Navbar = () => {
 								<Link to={'/naves'} className="nav-link active">Naves</Link>
 							</li>
 							<li className="nav-item dropdown">
-								<a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle={store.favorites.length > 0 ? 'dropdown' : ''} aria-expanded="false">
 									<i className="far fa-heart"></i> <span className="badge rounded-pill bg-success">{store.favorites.length}</span>
 								</a>
 								<ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 									{store.favorites.map((item, index) =>
 										<li className="dropdown-item d-flex justify-content-between" key={index}>
 											{item}
-											<span className="ms-2" onClick={() => actions.removeFavorites(item)}><i className="fas fa-heart-broken text-danger"></i></span>
+											<span className="ms-2" style={{cursor : 'pointer' }} onClick={() => actions.removeFavorites(item)}><i className="fas fa-heart text-danger"></i></span>
 										</li>)}
 								</ul>
 							</li>

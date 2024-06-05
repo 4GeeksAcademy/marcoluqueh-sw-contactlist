@@ -9,6 +9,9 @@ export const Planetas = () => {
 		actions.choosePlanet(planet)
 		actions.getDetailsPlanet(planet.url)
 	}
+	const isFavorite = (name) => {
+		return store.favorites.includes(name);
+	};
 
 	const imgError = (event) => {
 		event.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg"
@@ -29,8 +32,11 @@ export const Planetas = () => {
 											onClick={() => handleDetalle(item)}>
 											<h5 className="card-title">{item.name}</h5>
 										</Link>
-										<span className="ms-2" onClick={() => actions.addFavorites(item.name)}><i className="far fa-heart text-danger"></i></span>
-									</div>
+										{isFavorite(item.name) ? (
+										<span className="ms-2" onClick={() => actions.removeFavorites(item.name)} style={{cursor : 'pointer' }}><i className="fas fa-heart text-danger"></i></span>
+									) : (
+										<span className="ms-2" onClick={() => actions.addFavorites(item.name)} style={{cursor : 'pointer' }}><i className="far fa-heart text-danger"></i></span>
+									)}									</div>
 								</div>
 							</div>
 						);

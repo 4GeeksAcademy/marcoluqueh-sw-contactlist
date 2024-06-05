@@ -87,11 +87,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({starshipDetails: data.result.properties})
 			},
 			addFavorites: (newFavorite) => {
-				setStore({favorites: [...getStore().favorites, newFavorite]})
-			},
-			removeFavorites: (deletedItem) => {
-				setStore({favorites: [getStore().favorites.filter((item) => item != deletedItem)]})
-			}
+                const store = getStore();
+                const updatedFavorites = [...store.favorites, newFavorite];
+                setStore({ favorites: updatedFavorites });
+                console.log('Favorites after adding:', updatedFavorites);
+            },
+            removeFavorites: (deletedItem) => {
+                const store = getStore();
+                const updatedFavorites = store.favorites.filter((item) => item !== deletedItem);
+                setStore({ favorites: updatedFavorites });
+                console.log('Favorites after removing:', updatedFavorites);
+            }
 		}
 	};
 };

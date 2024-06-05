@@ -11,6 +11,10 @@ export const Personajes = () => {
 		actions.getDetailsCharacter(character.url)
 	}
 
+	const isFavorite = (name) => {
+		return store.favorites.includes(name);
+	};
+
 	return (
 		<div className="container">
 			<div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mt-2 justify-content-center">
@@ -27,7 +31,11 @@ export const Personajes = () => {
 											onClick={() => handleDetalle(item)}>
 											<h5 className="card-title text-center fs-6">{item.name}</h5>
 										</Link>
-										<span className="ms-2" onClick={() => actions.addFavorites(item.name)}><i className="far fa-heart text-danger"></i></span>
+										{isFavorite(item.name) ? (
+										<span className="ms-2" onClick={() => actions.removeFavorites(item.name)} style={{cursor : 'pointer' }}><i className="fas fa-heart text-danger"></i></span>
+									) : (
+										<span className="ms-2" onClick={() => actions.addFavorites(item.name)} style={{cursor : 'pointer' }}><i className="far fa-heart text-danger"></i></span>
+									)}
 									</div>
 								</div>
 							</div>
