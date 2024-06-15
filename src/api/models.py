@@ -62,7 +62,7 @@ class Posts(db.Model):
                 'body': self.body,
                 'date': self.date,
                 'img_url': self.img_url,
-                'author_id': self.user_to_id}
+                'author_id': self.author_id}
 
 
 class Comments(db.Model):
@@ -116,7 +116,7 @@ class Characters(db.Model):
         return {'id': self.id,
                 'name': self.name,
                 'description': self.description,
-                'hometown_id': self.hometown_id}
+                'homeworld_id': self.homeworld_id}
 
 
 class Films(db.Model):
