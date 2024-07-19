@@ -18,6 +18,8 @@ import { DetalleNaves } from "./pages/DetalleNaves.jsx";
 
 import { Naves } from "./pages/Naves.jsx";
 import { Spinner } from "./component/Spinner.jsx";
+import { Contacts } from "./pages/Contacts.jsx";
+import { AddContact } from "./pages/AddContact.jsx";
 
 //create your first component
 const Layout = () => {
@@ -41,6 +43,8 @@ const Layout = () => {
                         <Route element={<DetallePlanetas />} path="/detalle-planetas" />
                         <Route element={<DetalleNaves />} path="/detalle-naves" />
                         <Route element={<Demo />} path="/demo" />
+                        <Route element={<Contacts />} path="/contacts" />
+                        <Route element={<AddContact />} path="/addcontact" />
                         <Route element={<NotFound404 />} path='*'/>
                     </Routes>
                     <Footer />

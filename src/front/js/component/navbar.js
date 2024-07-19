@@ -18,6 +18,9 @@ export const Navbar = () => {
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul className="navbar-nav me-5 mb-2 mb-lg-0">
 							<li className="nav-item">
+								<Link to={'/contacts'} className="nav-link active">Contactos</Link>
+							</li>
+							<li className="nav-item">
 								<Link to={'/personajes'} className="nav-link active">Personajes</Link>
 							</li>
 							<li className="nav-item">
@@ -34,7 +37,7 @@ export const Navbar = () => {
 									{store.favorites.map((item, index) =>
 										<li className="dropdown-item d-flex justify-content-between" key={index}>
 											{item}
-											<span className="ms-2" style={{cursor : 'pointer' }} onClick={() => actions.removeFavorites(item)}><i className="fas fa-heart text-danger"></i></span>
+											<span className="ms-2" style={{ cursor: 'pointer' }} onClick={() => actions.removeFavorites(item)}><i className="fas fa-heart text-danger"></i></span>
 										</li>)}
 								</ul>
 							</li>

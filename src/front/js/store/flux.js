@@ -19,7 +19,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			starshipsSW: [],
 			currentStarship: {},
 			starshipDetails: {},
-			favorites: []
+			favorites: [],
+
+			apiContact: 'https://playground.4geeks.com/contact/',
+			agenda: 'marcoluqueh'
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -97,7 +100,57 @@ const getState = ({ getStore, getActions, setStore }) => {
                 const updatedFavorites = store.favorites.filter((item) => item !== deletedItem);
                 setStore({ favorites: updatedFavorites });
                 console.log('Favorites after removing:', updatedFavorites);
-            }
+            },
+			getContacts: async () => {
+				const uri = getStore().apiContact + 'agendas/' + getStore().agenda + '/contacts'
+				const response = await fetch (uri)
+				if (!response.ok) {
+					console.log('error:', response.status, response.statusText);
+					return
+				}
+				const data = await response.json()
+				setStore({contacts: data.contacts})
+				console.log(data.contacts);
+			},
+			addContact: async (dataToSend) => {
+				const uri = getStore().apiContact + 'agendas/' + getStore().agenda + '/contacts'
+				const options = {
+					method: 'POST',
+					headers:{
+						'Content-type': 'application/json'
+					},
+					body: JSON.stringify(dataToSend)
+				}
+				const response = await fetch (uri, options)
+				console.log(response);
+				if (!response.ok) {
+					console.log('error:', response.status, response.statusText);
+					return
+				}
+				const data = await response.json()
+				console.log(data);
+				getActions().getContacts()
+			},
+			editContact: async (dataToSend, id) => {
+				const uri = getStore().apiContact + 'agendas/' + getStore().agenda + '/contacts/' + id
+				const options = {
+					method: 'PUT',
+					headers:{
+						'Content-type': 'application/json'
+					},
+					body: JSON.stringify(dataToSend)
+				}
+				const response = await fetch (uri, options)
+				console.log(response);
+				if (!response.ok) {
+					console.log('error:', response.status, response.statusText);
+					return
+				}
+				const data = await response.json()
+				console.log(data);
+				getActions().getContacts()
+			}
+
 		}
 	};
 };
