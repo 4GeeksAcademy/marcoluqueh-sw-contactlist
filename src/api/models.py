@@ -104,6 +104,13 @@ class Planets(db.Model):
 class Characters(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40), unique=False, nullable=False)
+    height = db.Column(db.Integer, unique=False, nullable=False)
+    mass = db.Column(db.Integer, unique=False, nullable=False)
+    hair_color = db.Column(db.String(40), unique=False, nullable=False)
+    skin_color = db.Column(db.String(40), unique=False, nullable=False)
+    eye_color = db.Column(db.String(40), unique=False, nullable=False)
+    birth_year = db.Column(db.String(40), unique=False, nullable=False)
+    gender = db.Column(db.String(40), unique=False, nullable=False)
     description = db.Column(db.String(500), unique=False, nullable=False)
     homeworld_id = db.Column(db.Integer, db.ForeignKey('planets.id'))
     homeworld_id_to = db.relationship('Planets', foreign_keys=[homeworld_id])
