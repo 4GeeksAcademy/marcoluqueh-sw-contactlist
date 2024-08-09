@@ -2,24 +2,24 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
-
 import { Home } from "./pages/home";
 import { NotFound404 } from "./pages/NotFound404.jsx";
 import { Personajes } from "./pages/Personajes.jsx";
 import { DetallePersonajes } from "./pages/DetallePersonajes.jsx";
 import { Demo } from "./pages/demo";
 import injectContext from "./store/appContext";
-
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Planetas } from "./pages/Planetas.jsx";
 import { DetallePlanetas } from "./pages/DetallePlanetas.jsx";
 import { DetalleNaves } from "./pages/DetalleNaves.jsx";
-
 import { Naves } from "./pages/Naves.jsx";
 import { Spinner } from "./component/Spinner.jsx";
 import { Contacts } from "./pages/Contacts.jsx";
 import { AddContact } from "./pages/AddContact.jsx";
+import { Private } from "./pages/Private.jsx";
+import Signup from "./pages/Signup.jsx";
+import Login from "./pages/Login.jsx";
 
 //create your first component
 const Layout = () => {
@@ -27,7 +27,7 @@ const Layout = () => {
     // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
     const basename = process.env.BASENAME || "";
 
-    if(!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL/ >;
+    if (!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL />;
 
     return (
         <div>
@@ -36,6 +36,9 @@ const Layout = () => {
                     <Navbar />
                     <Routes>
                         <Route element={<Home />} path="/" />
+                        <Route element={<Signup />} path="/signup" />
+                        <Route element={<Login />} path="/login" />
+                        <Route element={<Private />} path="/private" />
                         <Route element={<Personajes />} path="/personajes" />
                         <Route element={<Planetas />} path="/planetas" />
                         <Route element={<Naves />} path="/naves" />
@@ -45,7 +48,7 @@ const Layout = () => {
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Contacts />} path="/contacts" />
                         <Route element={<AddContact />} path="/addcontact" />
-                        <Route element={<NotFound404 />} path='*'/>
+                        <Route element={<NotFound404 />} path='*' />
                     </Routes>
                     <Footer />
                 </ScrollToTop>

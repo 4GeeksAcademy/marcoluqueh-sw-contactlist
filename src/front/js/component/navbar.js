@@ -41,6 +41,22 @@ export const Navbar = () => {
 										</li>)}
 								</ul>
 							</li>
+							<li className="nav-item">
+								{store.isLogin ?
+									<>
+										<button type="button" className="btn btn-success p-0 me-2">
+											<Link to={'/private'} className="nav-link active text-light">Perfil <i class="fa-solid fa-user"></i></Link>
+										</button>
+										<button type="button" className="btn btn-danger p-0" onClick={actions.logout}>
+											<Link to={'/'} className="nav-link active text-light">Salir <i class="fa-solid fa-right-from-bracket"></i></Link>
+										</button>
+									</>
+									:
+									<button type="button" className="btn btn-success p-0">
+										<Link to={'/login'} className="nav-link active text-light">¡Accede!</Link>
+									</button>
+								}
+							</li>
 						</ul>
 					</div>
 				</div>

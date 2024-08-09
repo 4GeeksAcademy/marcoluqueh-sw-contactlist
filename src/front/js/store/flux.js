@@ -10,6 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					title: "SECOND",
 				}
 			],
+			isLogin: false,
 			charactersSW: [],
 			currentCharacter: {},
 			characterDetails: {},
@@ -35,6 +36,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const data = await response.json();
 				setStore({charactersSW: data.results})
 			},
+			logout: () => {
+				localStorage.removeItem("token");
+				setStore({isLogin: false})
+			},
+			setIsLogin: 
+				(login) => setStore({isLogin: login})
+			,
 			chooseCharacter: (character) => {
 				setStore({currentCharacter: character});
 			},
